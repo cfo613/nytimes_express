@@ -1,0 +1,32 @@
+<html>
+  <style>
+    ol>li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  </style>
+  <body>
+    <h2>NY Times Bestselling Book Details</h2>
+    <h3><%=msg["title"]%></h3>
+      <ul>
+        <li>Author: <%=msg["author"]%></li>
+        <li>ISBN13: <%=msg["isbn13"]%></li>
+        <li>Description: <%=msg["description"]%></li>
+      </ul>
+      <h3>Update the details for this book:</h3>
+      <form action = '/book/<%=msg["id"]%>' method = "post">
+        <input type = "hidden" name = "_method" value = "put">
+        <input type = "text" name = "newtitle" placeholder = "enter updated title here">
+        <input type = "text" name = "newauthor" placeholder = "enter updated author here">
+        <input type = "text" name = "newisbn" placeholder = "enter updated isbn # here">
+        <input type = "text" name = "newdesc" placeholder = "enter updated description here">
+        <button>update</button>
+      </form>
+      <h3>Remove this book from the list:</h3>
+      <form action = '/book/<%=msg["id"]%>' method = "post">
+        <input type = "hidden" name = "_method" value = "delete">
+        <button>delete</button>
+      </form>
+    <h4><a href = "/books">return to homepage</a></h4>
+  </body>
+</html>

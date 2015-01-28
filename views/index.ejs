@@ -1,0 +1,26 @@
+<html>
+  <style>
+    ol>li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  </style>
+  <body>
+    <h2>NY Times Bestsellers List</h2>
+    <h3>Add a Book You Think Should Be On...</h3>
+    <form action = '/book' method = "post">
+      <input type = "text" name = "title" placeholder = "enter title">
+      <input type = "text" name = "author" placeholder = "enter author">
+      <input type = "text" name = "isbn13" placeholder = "enter ISBN13">
+      <input type = "text" name = "description" placeholder = "enter description">
+      <button>submit</button>
+    </form>
+    <h3>Top 10ish List</h3>
+    <% var keys = Object.keys(msg) %>
+    <ol>
+    <% keys.forEach(function(elem) { %>
+          <li><a href = "/book/<%= msg[elem]["id"] %>"><%=msg[elem]["title"]%></a> by <%=msg[elem]["author"]%></li>
+    <% }) %>
+    </ol>
+  </body>
+</html>
