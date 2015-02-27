@@ -1,26 +1,77 @@
 <html>
   <style>
+    body {
+      background-image: url("http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg");
+      background-size: 100% 100%;
+      padding-top: 20px;
+    }
+    h2, h3 {
+      text-align: center;
+      margin-top: 15px;
+    }
+    form {
+      margin: 0 auto;
+      text-align: center;
+    }
     ol>li {
       padding-top: 10px;
       padding-bottom: 10px;
+      margin: 0 auto;
+      text-align: center;
+      list-style-position: inside;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 175px;
+      box-shadow: 2px 2px #888;
+      text-align: center;
+    }
+    #container {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #submit {
+      border-top: 1px solid rgb(8, 113, 8);
+      background: rgb(13, 160, 13);
+      padding: 9px 18px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      box-shadow: rgba(0,0,0,1) 0 1px 0;
+      text-shadow: rgba(0,0,0,.4) 0 1px 0;
+      color: white;
+      font-size: 12px;
+      vertical-align: middle;
+      width: 125px;
     }
   </style>
   <body>
-    <h2>NY Times Bestsellers List</h2>
-    <h3>Add a Book You Think Should Be On...</h3>
-    <form action = '/book' method = "post">
-      <input type = "text" name = "title" placeholder = "enter title">
-      <input type = "text" name = "author" placeholder = "enter author">
-      <input type = "text" name = "isbn13" placeholder = "enter ISBN13">
-      <input type = "text" name = "description" placeholder = "enter description">
-      <button>submit</button>
-    </form>
-    <h3>Top 10ish List</h3>
-    <% var keys = Object.keys(msg) %>
-    <ol>
-    <% keys.forEach(function(elem) { %>
-          <li><a href = "/book/<%= msg[elem]["id"] %>"><%=msg[elem]["title"]%></a> by <%=msg[elem]["author"]%></li>
-    <% }) %>
-    </ol>
+    <div id = "container">
+      <h2>NY Times Bestsellers List</h2>
+      <h3>Add a Book You Think Should Be On...</h3>
+      <form action = '/book' method = "post">
+        <input type = "text" name = "title" placeholder = "enter title">
+        <input type = "text" name = "author" placeholder = "enter author">
+        <br><br>
+        <input type = "text" name = "isbn13" placeholder = "enter ISBN13">
+        <input type = "text" name = "description" placeholder = "enter description">
+        <br><br>
+        <button id = "submit">SUBMIT</button>
+      </form>
+      <br>
+      <h3>Top 10ish List...</h3>
+      <% var keys = Object.keys(msg) %>
+      <ol>
+      <% keys.forEach(function(elem) { %>
+            <li><a href = "/book/<%= msg[elem]["id"] %>"><%=msg[elem]["title"]%></a> by <%=msg[elem]["author"]%></li>
+      <% }) %>
+      </ol>
+    </div>
   </body>
 </html>

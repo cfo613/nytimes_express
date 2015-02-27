@@ -1,32 +1,114 @@
 <html>
   <style>
-    ol>li {
-      padding-top: 10px;
-      padding-bottom: 10px;
+    body {
+      background-image: url("http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg");
+      background-size: 100% 100%;
+      padding-top: 20px;
+    }
+    h2, h3, h4 {
+      text-align: center;
+      margin-top: 15px;
+    }
+    form {
+      margin: 0 auto;
+      text-align: center;
+    }
+    ul>li {
+      margin: 0 auto;
+      padding-left: 25px;
+      padding-right: 35px;
+      list-style-position: inside;
+      list-style-type: none;
+    }
+    input {
+      width:
+    }
+    #container {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #title {
+      text-decoration: underline;
+    }
+    .fontBold {
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 175px;
+      box-shadow: 2px 2px #888;
+      text-align: center;
+    }
+    #update {
+      border-top: 1px solid rgb(8, 113, 8);
+      background: rgb(13, 160, 13);
+      padding: 9px 18px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      box-shadow: rgba(0,0,0,1) 0 1px 0;
+      text-shadow: rgba(0,0,0,.4) 0 1px 0;
+      color: white;
+      font-size: 12px;
+      vertical-align: middle;
+      width: 125px;
+    }
+    #delete {
+      border-top: 1px solid rgb(198, 8, 5);
+      background: rgb(244, 8, 4);
+      padding: 9px 18px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+      box-shadow: rgba(0,0,0,1) 0 1px 0;
+      text-shadow: rgba(0,0,0,.4) 0 1px 0;
+      color: white;
+      font-size: 12px;
+      vertical-align: middle;
+      width: 125px;
     }
   </style>
   <body>
-    <h2>NY Times Bestselling Book Details</h2>
-    <h3><%=msg["title"]%></h3>
-      <ul>
-        <li>Author: <%=msg["author"]%></li>
-        <li>ISBN13: <%=msg["isbn13"]%></li>
-        <li>Description: <%=msg["description"]%></li>
-      </ul>
-      <h3>Update the details for this book:</h3>
-      <form action = '/book/<%=msg["id"]%>' method = "post">
-        <input type = "hidden" name = "_method" value = "put">
-        <input type = "text" name = "newtitle" placeholder = "enter updated title here">
-        <input type = "text" name = "newauthor" placeholder = "enter updated author here">
-        <input type = "text" name = "newisbn" placeholder = "enter updated isbn # here">
-        <input type = "text" name = "newdesc" placeholder = "enter updated description here">
-        <button>update</button>
-      </form>
-      <h3>Remove this book from the list:</h3>
-      <form action = '/book/<%=msg["id"]%>' method = "post">
-        <input type = "hidden" name = "_method" value = "delete">
-        <button>delete</button>
-      </form>
-    <h4><a href = "/books">return to homepage</a></h4>
+    <div id = "container">
+      <h2>NY Times Bestselling Book Details</h2>
+      <h3 id = "title"><%=msg["title"]%></h3>
+        <ul>
+          <li class = "fontBold">Author:</li>
+          <li><%=msg["author"]%></li>
+          <br>
+          <li class = "fontBold">ISBN13:</li>
+          <li><%=msg["isbn13"]%></li>
+          <br>
+          <li class = "fontBold">Description:</li>
+          <li><%=msg["description"]%></li>
+        </ul>
+        <br>
+        <h3>Update the details for this book:</h3>
+        <form action = '/book/<%=msg["id"]%>' method = "post">
+          <input type = "hidden" name = "_method" value = "put">
+          <input type = "text" name = "newtitle" placeholder = "enter updated title here">
+          <input type = "text" name = "newauthor" placeholder = "enter updated author here">
+          <br><br>
+          <input type = "text" name = "newisbn" placeholder = "enter updated isbn # here">
+          <input type = "text" name = "newdesc" placeholder = "enter updated description here">
+          <br><br>
+          <button id = "update">UPDATE</button>
+        </form>
+        <br>
+        <h3>Remove this book from the list:</h3>
+        <form action = '/book/<%=msg["id"]%>' method = "post">
+          <input type = "hidden" name = "_method" value = "delete">
+          <button id = "delete">DELETE</button>
+        </form>
+        <br>
+      <h4><a href = "/books">return to homepage</a></h4>
+    </div>
   </body>
 </html>
